@@ -1,5 +1,5 @@
-import { AsyncSeriesBailHook, AsyncSeriesHook, SyncHook } from "tapable";
-import * as fs from "fs";
+import { AsyncSeriesBailHook, AsyncSeriesHook, SyncHook } from 'tapable';
+import * as fs from 'fs';
 
 export interface ResolvePluginInstance {
   apply: (resolver: Resolver) => void;
@@ -28,44 +28,22 @@ declare class CachedInputFileSystem {
   fileSystem: any;
   lstat?: {
     (arg0: string, arg1: FileSystemCallback<FileSystemStats>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   lstatSync?: (arg0: string, arg1?: object) => FileSystemStats;
   stat: {
     (arg0: string, arg1: FileSystemCallback<FileSystemStats>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   statSync: (arg0: string, arg1?: object) => FileSystemStats;
   readdir: {
-    (
-      arg0: string,
-      arg1: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>
-    ): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>
-    ): void;
+    (arg0: string, arg1: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>): void;
   };
-  readdirSync: (
-    arg0: string,
-    arg1?: object
-  ) => (string | Buffer)[] | FileSystemDirent[];
+  readdirSync: (arg0: string, arg1?: object) => (string | Buffer)[] | FileSystemDirent[];
   readFile: {
     (arg0: string, arg1: FileSystemCallback<string | Buffer>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   readFileSync: (arg0: string, arg1?: object) => string | Buffer;
   readJson?: {
@@ -75,11 +53,7 @@ declare class CachedInputFileSystem {
   readJsonSync?: (arg0: string, arg1?: object) => object;
   readlink: {
     (arg0: string, arg1: FileSystemCallback<string | Buffer>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   readlinkSync: (arg0: string, arg1?: object) => string | Buffer;
   purge(what?: any): void;
@@ -93,22 +67,11 @@ declare class CloneBasenamePlugin {
 export declare interface FileSystem {
   readFile: {
     (arg0: string, arg1: FileSystemCallback<string | Buffer>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   readdir: {
-    (
-      arg0: string,
-      arg1: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>
-    ): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>
-    ): void;
+    (arg0: string, arg1: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<(string | Buffer)[] | FileSystemDirent[]>): void;
   };
   readJson?: {
     (arg0: string, arg1: FileSystemCallback<object>): void;
@@ -116,27 +79,15 @@ export declare interface FileSystem {
   };
   readlink: {
     (arg0: string, arg1: FileSystemCallback<string | Buffer>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   lstat?: {
     (arg0: string, arg1: FileSystemCallback<FileSystemStats>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
   stat: {
     (arg0: string, arg1: FileSystemCallback<FileSystemStats>): void;
-    (
-      arg0: string,
-      arg1: object,
-      arg2: FileSystemCallback<string | Buffer>
-    ): void;
+    (arg0: string, arg1: object, arg2: FileSystemCallback<string | Buffer>): void;
   };
 }
 declare interface FileSystemCallback<T> {
@@ -165,9 +116,7 @@ declare interface ParsedIdentifier {
   file: boolean;
   internal: boolean;
 }
-type Plugin =
-  | { apply: (arg0: Resolver) => void }
-  | ((this: Resolver, arg1: Resolver) => void);
+type Plugin = { apply: (arg0: Resolver) => void } | ((this: Resolver, arg1: Resolver) => void);
 declare interface PnpApiImpl {
   resolveToUnqualified: (arg0: string, arg1: string, arg2: object) => string;
 }
@@ -242,62 +191,27 @@ export declare abstract class Resolver {
   options: ResolveOptions;
   hooks: {
     resolveStep: SyncHook<
-      [
-        AsyncSeriesBailHook<
-          [ResolveRequest, ResolveContext],
-          null | ResolveRequest
-        >,
-        ResolveRequest
-      ]
+      [AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>, ResolveRequest]
     >;
     noResolve: SyncHook<[ResolveRequest, Error]>;
-    resolve: AsyncSeriesBailHook<
-      [ResolveRequest, ResolveContext],
-      null | ResolveRequest
-    >;
+    resolve: AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>;
     result: AsyncSeriesHook<[ResolveRequest, ResolveContext]>;
   };
   ensureHook(
-    name:
-      | string
-      | AsyncSeriesBailHook<
-          [ResolveRequest, ResolveContext],
-          null | ResolveRequest
-        >
-  ): AsyncSeriesBailHook<
-    [ResolveRequest, ResolveContext],
-    null | ResolveRequest
-  >;
+    name: string | AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>
+  ): AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>;
   getHook(
-    name:
-      | string
-      | AsyncSeriesBailHook<
-          [ResolveRequest, ResolveContext],
-          null | ResolveRequest
-        >
-  ): AsyncSeriesBailHook<
-    [ResolveRequest, ResolveContext],
-    null | ResolveRequest
-  >;
+    name: string | AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>
+  ): AsyncSeriesBailHook<[ResolveRequest, ResolveContext], null | ResolveRequest>;
   resolveSync(context: object, path: string, request: string): string | false;
   resolve(
     context: object,
     path: string,
     request: string,
     resolveContext: ResolveContext,
-    callback: (
-      arg0: null | Error,
-      arg1?: string | false,
-      arg2?: ResolveRequest
-    ) => void
+    callback: (arg0: null | Error, arg1?: string | false, arg2?: ResolveRequest) => void
   ): void;
-  doResolve(
-    hook?: any,
-    request?: any,
-    message?: any,
-    resolveContext?: any,
-    callback?: any
-  ): any;
+  doResolve(hook?: any, request?: any, message?: any, resolveContext?: any, callback?: any): any;
   parse(identifier: string): ParsedIdentifier;
   isModule(path?: any): boolean;
   isPrivate(path?: any): boolean;
@@ -389,11 +303,7 @@ declare interface UserResolveOptions {
   /**
    * A list of main fields in description files
    */
-  mainFields?: (
-    | string
-    | string[]
-    | { name: string | string[]; forceRelative: boolean }
-  )[];
+  mainFields?: (string | string[] | { name: string | string[]; forceRelative: boolean })[];
 
   /**
    * A list of main files in directories
@@ -449,109 +359,84 @@ declare interface WriteOnlySet<T> {
   add: (T?: any) => void;
 }
 
-
-
 export type TapAsyncCallback = (
-    request: ResolveRequest,
-    context: ResolveContext,
-    callback: TapAsyncInnerCallback
-  ) => void;
-  
-  export type TapAsyncInnerCallback = (
-    error?: Error | null | false,
-    result?: null | ResolveRequest
-  ) => void;
-  
-  export interface LegacyResolverPlugin {
-    readonly apply: (resolver: LegacyResolver) => void;
-  }
-  
-  export interface LegacyResolver {
-    readonly apply: (plugin: LegacyResolverPlugin) => void;
-    readonly plugin: (source: string, cb: ResolverCallbackLegacy) => void;
-    readonly doResolve: doResolveLegacy | doResolve;
-    readonly join: (relativePath: string, innerRequest: Request) => Request;
-    readonly fileSystem: LegacyResolverFileSystem;
-    readonly getHook: (hook: string) => Tapable;
-  }
-  
-  export type doResolveLegacy = (
-    target: string,
-    req: Request,
-    desc: string,
-    callback: Callback
-  ) => void;
-  
-  export type doResolve = (
-    hook: Tapable,
-    req: Request,
-    message: string,
-    resolveContext: LegacyResolveContext,
-    callback: Callback
-  ) => void;
-  
-  export type ReadJsonCallback = (error: Error | undefined, result?: {}) => void;
-  
-  export type ReadJson = (path2: string, callback: ReadJsonCallback) => void;
-  
-  export type LegacyResolverFileSystem = typeof fs & { readJson?: ReadJson };
-  
-  export interface LegacyResolveContext {
+  request: ResolveRequest,
+  context: ResolveContext,
+  callback: TapAsyncInnerCallback
+) => void;
+
+export type TapAsyncInnerCallback = (error?: Error | null | false, result?: null | ResolveRequest) => void;
+
+export interface LegacyResolverPlugin {
+  readonly apply: (resolver: LegacyResolver) => void;
+}
+
+export interface LegacyResolver {
+  readonly apply: (plugin: LegacyResolverPlugin) => void;
+  readonly plugin: (source: string, cb: ResolverCallbackLegacy) => void;
+  readonly doResolve: doResolveLegacy | doResolve;
+  readonly join: (relativePath: string, innerRequest: Request) => Request;
+  readonly fileSystem: LegacyResolverFileSystem;
+  readonly getHook: (hook: string) => Tapable;
+}
+
+export type doResolveLegacy = (target: string, req: Request, desc: string, callback: Callback) => void;
+
+export type doResolve = (
+  hook: Tapable,
+  req: Request,
+  message: string,
+  resolveContext: LegacyResolveContext,
+  callback: Callback
+) => void;
+
+export type ReadJsonCallback = (error: Error | undefined, result?: {}) => void;
+
+export type ReadJson = (path2: string, callback: ReadJsonCallback) => void;
+
+export type LegacyResolverFileSystem = typeof fs & { readJson?: ReadJson };
+
+export interface LegacyResolveContext {
+  log?: string;
+  stack?: string;
+  missing?: string;
+}
+
+export interface Tapable {
+  readonly tapAsync: (options: TapableOptions, callback: TapAsyncCallback) => void;
+}
+
+export interface TapableOptions {
+  readonly name: string;
+}
+
+export type ResolverCallbackLegacy = (request: Request, callback: Callback) => void;
+export type ResolverCallback = (request: Request, resolveContext: LegacyResolveContext, callback: Callback) => void;
+
+export type CreateInnerContext = (
+  options: {
     log?: string;
     stack?: string;
     missing?: string;
-  }
-  
-  export interface Tapable {
-    readonly tapAsync: (
-      options: TapableOptions,
-      callback: TapAsyncCallback
-    ) => void;
-  }
-  
-  export interface TapableOptions {
-    readonly name: string;
-  }
-  
-  export type ResolverCallbackLegacy = (
-    request: Request,
-    callback: Callback
-  ) => void;
-  export type ResolverCallback = (
-    request: Request,
-    resolveContext: LegacyResolveContext,
-    callback: Callback
-  ) => void;
-  
-  
-  export type CreateInnerContext = (
-    options: {
-      log?: string;
-      stack?: string;
-      missing?: string;
-    },
-    message?: string,
-    messageOptional?: string
-  ) => ResolveContext;
-  
-  export type getInnerRequest = (
-    resolver: Resolver | LegacyResolver,
-    request: ResolveRequest | Request
-  ) => string;
-  
-  export interface Request {
-    readonly request?: Request | string;
-    readonly relativePath: string;
-    readonly path: string;
-    readonly context: {
-      readonly issuer: string;
-    };
-  }
-  
-  export interface Callback {
-    (err?: Error, result?: string): void;
-    log?: string;
-    stack?: string;
-    missing?: string;
-  }
-  
+  },
+  message?: string,
+  messageOptional?: string
+) => ResolveContext;
+
+export type getInnerRequest = (resolver: Resolver | LegacyResolver, request: ResolveRequest | Request) => string;
+
+export interface Request {
+  readonly request?: Request | string;
+  readonly relativePath: string;
+  readonly path: string;
+  readonly context: {
+    readonly issuer: string;
+  };
+}
+
+export interface Callback {
+  (err?: Error, result?: string): void;
+  log?: string;
+  stack?: string;
+  missing?: string;
+}

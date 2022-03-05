@@ -1,6 +1,6 @@
 {
   "name": "webpack-loader-typescript-template",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Template for creating webpack loaders that uses typescript",
   "main": "dist/src/index.js",
   "scripts": {
@@ -41,5 +41,8 @@
   },
   "files": [
     "dist/src/*"
-  ]
+  ],
+  "dependencies": {
+    "enhanced-resolve": "^5.9.2"
+  }
 }

@@ -14,7 +14,11 @@ export class NXTResolverPlugin implements ResolvePluginInstance {
 
   log = console;
 
-  constructor(rawOptions: Partial<{}> = {}) {}
+  constructor(
+    rawOptions: Partial<{
+      levels: string[];
+    }> = {}
+  ) {}
 
   apply(resolver: Resolver): void {
     if (!resolver) {
@@ -38,7 +42,7 @@ export class NXTResolverPlugin implements ResolvePluginInstance {
 
 function createPluginCallback(resolver: Resolver, hook: Tapable): TapAsyncCallback {
   return (request: ResolveRequest, resolveContext: ResolveContext, callback: TapAsyncInnerCallback) => {
-    if (!request?.request?.startsWith('@') || !request?.request?.startsWith('..')) {
+    if (!request?.request?.startsWith('@')) {
       return callback();
     }
     const foundMatch = '';
